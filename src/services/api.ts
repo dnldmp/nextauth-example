@@ -1,6 +1,7 @@
 import axios, { AxiosError } from 'axios'
 import { defaultConfig } from 'next/dist/server/config-shared'
 import { parseCookies, setCookie } from 'nookies'
+import { signOut } from '../contexts/AuthContext'
 
 let cookies = parseCookies()
 let isRefreshing = false
@@ -62,7 +63,9 @@ api.interceptors.response.use(response => {return response}, (error: AxiosError)
       })
     } else {
       // logout
+      signOut()
     }
   }
   
+  return Promise.reject(error)
 })
