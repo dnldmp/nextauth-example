@@ -1,5 +1,6 @@
-import { FormEvent, useContext, useState } from "react"
+import { FormEvent, useContext, useEffect, useState } from "react"
 import { AuthContext } from "../contexts/AuthContext"
+import { api } from "../services/api"
 
 export default function Home() {
   const [email, setEmail] = useState('') 
